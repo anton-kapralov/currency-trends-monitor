@@ -1,7 +1,7 @@
 package kae.demo.currencytrendsmonitor.server.api.trademessage;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Data;
 
@@ -22,7 +22,7 @@ public final class TradeMessage {
 
   private BigDecimal rate;
 
-  private ZonedDateTime timePlaced;
+  private LocalDateTime timePlaced;
 
   private String originatingCountry;
 }
