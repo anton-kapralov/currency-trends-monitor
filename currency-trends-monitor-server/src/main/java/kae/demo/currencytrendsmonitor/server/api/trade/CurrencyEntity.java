@@ -16,7 +16,7 @@ public class CurrencyEntity implements Serializable {
   @Id private Integer id;
 
   @Column(nullable = false, unique = true)
-  private String code;
+  private String isoCode;
 
   @Column(nullable = false)
   private String name;
@@ -27,8 +27,8 @@ public class CurrencyEntity implements Serializable {
     return id;
   }
 
-  public String getCode() {
-    return code;
+  public String getIsoCode() {
+    return isoCode;
   }
 
   public String getName() {
@@ -44,19 +44,19 @@ public class CurrencyEntity implements Serializable {
       return false;
     }
     CurrencyEntity that = (CurrencyEntity) o;
-    return code.equals(that.code);
+    return isoCode.equals(that.isoCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code);
+    return Objects.hash(isoCode);
   }
 
   @Override
   public String toString() {
     return new StringJoiner(", ", CurrencyEntity.class.getSimpleName() + "[", "]")
         .add("id=" + id)
-        .add("code='" + code + "'")
+        .add("isoCode='" + isoCode + "'")
         .add("name='" + name + "'")
         .toString();
   }

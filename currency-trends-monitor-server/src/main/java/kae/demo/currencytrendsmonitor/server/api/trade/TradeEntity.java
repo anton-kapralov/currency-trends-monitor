@@ -97,12 +97,12 @@ public class TradeEntity implements Serializable {
     return new StringJoiner(", ", TradeEntity.class.getSimpleName() + "[", "]")
         .add("id=" + id)
         .add("user=" + user.getSystemId())
-        .add("currencyFrom=" + currencyFrom.getCode())
+        .add("currencyFrom=" + currencyFrom.getIsoCode())
         .add("amountFrom=" + amountFrom)
-        .add("currencyTo=" + currencyTo.getCode())
+        .add("currencyTo=" + currencyTo.getIsoCode())
         .add("amountTo=" + amountTo)
         .add("timePlaced=" + timePlaced)
-        .add("country=" + country.getCode())
+        .add("country=" + country.getIso2Code())
         .toString();
   }
 }

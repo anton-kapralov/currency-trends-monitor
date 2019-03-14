@@ -1,6 +1,7 @@
 package kae.demo.currencytrendsmonitor.server.api.trade;
 
 import java.io.Serializable;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.StringJoiner;
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ public class CountryEntity implements Serializable {
   @Id private Integer id;
 
   @Column(nullable = false, unique = true)
-  private String code;
+  private String iso2Code;
 
   @Column(nullable = false)
   private String name;
@@ -27,8 +28,8 @@ public class CountryEntity implements Serializable {
     return id;
   }
 
-  public String getCode() {
-    return code;
+  public String getIso2Code() {
+    return iso2Code;
   }
 
   public String getName() {
@@ -44,19 +45,19 @@ public class CountryEntity implements Serializable {
       return false;
     }
     CountryEntity that = (CountryEntity) o;
-    return code.equals(that.code);
+    return iso2Code.equals(that.iso2Code);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code);
+    return Objects.hash(iso2Code);
   }
 
   @Override
   public String toString() {
     return new StringJoiner(", ", CountryEntity.class.getSimpleName() + "[", "]")
         .add("id=" + id)
-        .add("code='" + code + "'")
+        .add("iso2Code='" + iso2Code + "'")
         .add("name='" + name + "'")
         .toString();
   }
