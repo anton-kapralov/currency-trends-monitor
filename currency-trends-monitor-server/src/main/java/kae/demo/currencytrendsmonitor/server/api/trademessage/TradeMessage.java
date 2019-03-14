@@ -3,6 +3,7 @@ package kae.demo.currencytrendsmonitor.server.api.trademessage;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /** */
 public final class TradeMessage {
@@ -86,5 +87,63 @@ public final class TradeMessage {
 
   public void setOriginatingCountry(String originatingCountry) {
     this.originatingCountry = originatingCountry;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof TradeMessage)) {
+      return false;
+    }
+    TradeMessage that = (TradeMessage) o;
+    return Objects.equals(userId, that.userId)
+        && Objects.equals(currencyFrom, that.currencyFrom)
+        && Objects.equals(currencyTo, that.currencyTo)
+        && Objects.equals(amountSell, that.amountSell)
+        && Objects.equals(amountBuy, that.amountBuy)
+        && Objects.equals(rate, that.rate)
+        && Objects.equals(timePlaced, that.timePlaced)
+        && Objects.equals(originatingCountry, that.originatingCountry);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(
+        userId,
+        currencyFrom,
+        currencyTo,
+        amountSell,
+        amountBuy,
+        rate,
+        timePlaced,
+        originatingCountry);
+  }
+
+  @Override
+  public String toString() {
+    return "TradeMessage{"
+        + "userId='"
+        + userId
+        + '\''
+        + ", currencyFrom='"
+        + currencyFrom
+        + '\''
+        + ", currencyTo='"
+        + currencyTo
+        + '\''
+        + ", amountSell="
+        + amountSell
+        + ", amountBuy="
+        + amountBuy
+        + ", rate="
+        + rate
+        + ", timePlaced="
+        + timePlaced
+        + ", originatingCountry='"
+        + originatingCountry
+        + '\''
+        + '}';
   }
 }
