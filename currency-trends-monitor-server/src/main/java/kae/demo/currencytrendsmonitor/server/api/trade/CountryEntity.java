@@ -1,7 +1,6 @@
 package kae.demo.currencytrendsmonitor.server.api.trade;
 
 import java.io.Serializable;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.StringJoiner;
 import javax.persistence.Column;
@@ -16,7 +15,7 @@ public class CountryEntity implements Serializable {
 
   @Id private Integer id;
 
-  @Column(nullable = false, unique = true)
+  @Column(name = "iso_2_code", nullable = false, unique = true)
   private String iso2Code;
 
   @Column(nullable = false)
