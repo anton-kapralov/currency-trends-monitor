@@ -1,5 +1,6 @@
 package kae.demo.currencytrendsmonitor.server.api.trademessage;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -18,6 +19,7 @@ public final class TradeMessage {
 
   private BigDecimal rate;
 
+  @JsonDeserialize(using = TradeMessageDateTimeDeserializer.class)
   private LocalDateTime timePlaced;
 
   private String originatingCountry;
