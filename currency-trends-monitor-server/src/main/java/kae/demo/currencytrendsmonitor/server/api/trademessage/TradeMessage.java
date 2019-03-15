@@ -5,12 +5,15 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 /** */
 public final class TradeMessage {
 
-  @NotNull private String userId;
+  @NotNull
+  @Size(min = 1)
+  private String userId;
 
   @NotNull
   @Size(min = 3, max = 3)
@@ -20,11 +23,11 @@ public final class TradeMessage {
   @Size(min = 3, max = 3)
   private String currencyTo;
 
-  @NotNull private BigDecimal amountSell;
+  @NotNull @Positive private BigDecimal amountSell;
 
-  @NotNull private BigDecimal amountBuy;
+  @NotNull @Positive private BigDecimal amountBuy;
 
-  @NotNull private BigDecimal rate;
+  @NotNull @Positive private BigDecimal rate;
 
   @NotNull
   @JsonDeserialize(using = TradeMessageDateTimeDeserializer.class)
