@@ -4,25 +4,34 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /** */
 public final class TradeMessage {
 
-  private String userId;
+  @NotNull private String userId;
 
+  @NotNull
+  @Size(min = 3, max = 3)
   private String currencyFrom;
 
+  @NotNull
+  @Size(min = 3, max = 3)
   private String currencyTo;
 
-  private BigDecimal amountSell;
+  @NotNull private BigDecimal amountSell;
 
-  private BigDecimal amountBuy;
+  @NotNull private BigDecimal amountBuy;
 
-  private BigDecimal rate;
+  @NotNull private BigDecimal rate;
 
+  @NotNull
   @JsonDeserialize(using = TradeMessageDateTimeDeserializer.class)
   private LocalDateTime timePlaced;
 
+  @NotNull
+  @Size(min = 2, max = 2)
   private String originatingCountry;
 
   public String getUserId() {
