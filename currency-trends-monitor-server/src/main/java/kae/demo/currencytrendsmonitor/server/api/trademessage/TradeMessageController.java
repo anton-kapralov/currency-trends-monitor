@@ -13,9 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class TradeMessageController {
 
+  private final TradeMessageService tradeMessageService;
+
+  public TradeMessageController(TradeMessageService tradeMessageService) {
+    this.tradeMessageService = tradeMessageService;
+  }
+
   @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity consume(@RequestBody @Valid TradeMessage tradeMessage) {
     log.debug("Received a trade message: {}", tradeMessage);
+
+    tradeMessageService.save(tradeMessage);
 
     return ResponseEntity.noContent().build();
   }
