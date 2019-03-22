@@ -37,6 +37,28 @@ public final class TradeMessage {
   @Size(min = 2, max = 2)
   private String originatingCountry;
 
+  TradeMessage() {}
+
+  /** @deprecated For tests only. */
+  TradeMessage(
+      @NotNull @Size(min = 1) String userId,
+      @NotNull @Size(min = 3, max = 3) String currencyFrom,
+      @NotNull @Size(min = 3, max = 3) String currencyTo,
+      @NotNull @Positive BigDecimal amountSell,
+      @NotNull @Positive BigDecimal amountBuy,
+      @NotNull @Positive BigDecimal rate,
+      @NotNull LocalDateTime timePlaced,
+      @NotNull @Size(min = 2, max = 2) String originatingCountry) {
+    this.userId = userId;
+    this.currencyFrom = currencyFrom;
+    this.currencyTo = currencyTo;
+    this.amountSell = amountSell;
+    this.amountBuy = amountBuy;
+    this.rate = rate;
+    this.timePlaced = timePlaced;
+    this.originatingCountry = originatingCountry;
+  }
+
   public String getUserId() {
     return userId;
   }

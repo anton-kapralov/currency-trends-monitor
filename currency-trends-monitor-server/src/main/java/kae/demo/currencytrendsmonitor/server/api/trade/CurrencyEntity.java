@@ -23,6 +23,13 @@ public class CurrencyEntity implements Serializable {
 
   CurrencyEntity() {}
 
+  /** @deprecated For tests only. */
+  CurrencyEntity(Integer id, String isoCode, String name) {
+    this.id = id;
+    this.isoCode = isoCode;
+    this.name = name;
+  }
+
   public Integer getId() {
     return id;
   }
