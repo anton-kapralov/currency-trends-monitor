@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+
+  <title>Currency Trends</title>
+</head>
+<body>
+<h2>Recent messages</h2>
+
+<table>
+  <tr>
+    <th>User ID</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Sell</th>
+    <th>Buy</th>
+    <th>Rate</th>
+    <th>Time</th>
+    <th>Country</th>
+  </tr>
+  <!--/*@thymesVar id="tradeMessage" type="kae.demo.currencytrendsmonitor.server.api.trademessage.TradeMessage"*/-->
+  <tr th:each="tradeMessage : ${tradeMessagesPage.getContent()}">
+    <td th:text="${tradeMessage.userId}">123</td>
+    <td th:text="${tradeMessage.currencyFrom}">RUB</td>
+    <td th:text="${tradeMessage.currencyTo}">USD</td>
+    <td th:text="${tradeMessage.amountSell}">6500</td>
+    <td th:text="${tradeMessage.amountBuy}">100</td>
+    <td th:text="${tradeMessage.rate}">65.0000</td>
+    <td th:text="${tradeMessage.timePlaced}">22.03.2019 22:05</td>
+    <td th:text="${tradeMessage.originatingCountry}">RU</td>
+  </tr>
+</table>
+
+</body>
+</html>
