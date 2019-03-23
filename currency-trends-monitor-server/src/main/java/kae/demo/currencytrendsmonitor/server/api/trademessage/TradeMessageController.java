@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 /** */
 @RestController("/api/trademessages")
 @Slf4j
-public class TradeMessageController {
+public final class TradeMessageController {
 
   private final TradeMessageService tradeMessageService;
 
-  public TradeMessageController(TradeMessageService tradeMessageService) {
+  TradeMessageController(TradeMessageService tradeMessageService) {
     this.tradeMessageService = tradeMessageService;
   }
 
