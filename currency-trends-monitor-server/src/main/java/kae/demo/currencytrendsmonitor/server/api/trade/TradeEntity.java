@@ -2,6 +2,7 @@ package kae.demo.currencytrendsmonitor.server.api.trade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.ZonedDateTime;
 import java.util.StringJoiner;
 import java.util.UUID;
@@ -90,6 +91,12 @@ public class TradeEntity implements Serializable {
 
   public CountryEntity getCountry() {
     return country;
+  }
+
+  public BigDecimal getRate() {
+    return amountFrom.equals(BigDecimal.ZERO)
+        ? BigDecimal.ZERO
+        : amountTo.divide(amountFrom, 4, RoundingMode.HALF_UP);
   }
 
   @Override

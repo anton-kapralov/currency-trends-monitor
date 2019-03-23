@@ -39,7 +39,6 @@ public final class TradeMessage {
 
   TradeMessage() {}
 
-  /** @deprecated For tests only. */
   TradeMessage(
       @NotNull @Size(min = 1) String userId,
       @NotNull @Size(min = 3, max = 3) String currencyFrom,

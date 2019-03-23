@@ -1,7 +1,9 @@
 package kae.demo.currencytrendsmonitor.server.api.trademessage;
 
+import static java.util.Collections.singletonList;
 import static kae.demo.currencytrendsmonitor.server.api.trade.CountryTestHelper.createDummyCountry;
 import static kae.demo.currencytrendsmonitor.server.api.trade.CurrencyTestHelper.createDummyCurrency;
+import static kae.demo.currencytrendsmonitor.server.api.trade.TradeTestHelper.createDummyTrade;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
@@ -28,9 +30,25 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 /** */
 public class TradeMessageServiceImplTest {
+
+  private static TradeMessage createDummyTradeMessage() {
+    return new TradeMessage(
+        "user-1",
+        "RUB",
+        "USD",
+        BigDecimal.valueOf(65),
+        BigDecimal.ONE,
+        BigDecimal.valueOf(0.0154),
+        LocalDateTime.of(2019, 3, 20, 21, 12, 34),
+        "RU");
+  }
 
   @Mock private CountryRepository countryRepository;
   @Mock private CurrencyRepository currencyRepository;
@@ -174,15 +192,13 @@ public class TradeMessageServiceImplTest {
         .save(argThat(tradeEntity -> tradeEntity.getTimePlaced().equals(timePlacedAtUtc)));
   }
 
-  private TradeMessage createDummyTradeMessage() {
-    return new TradeMessage(
-        "user-1",
-        "RUB",
-        "USD",
-        BigDecimal.valueOf(65),
-        BigDecimal.ONE,
-        BigDecimal.valueOf(65),
-        LocalDateTime.of(2019, 3, 20, 21, 12, 34),
-        "RU");
+  @Test
+  public void findsAll_convertsTradeEntityIntoTradeMessage() {
+    TradeMessage dummyTradeMessage = createDummyTradeMessage();
+    when(tradeRepository.findAll(any(Pageable.class)))
+        .thenReturn(new PageImpl<>(singletonList(createDummyTrade(dummyTradeMessage))));
+
+    Page<TradeMessage> tradeMessagePage = tradeMessageService.findAll(PageRequest.of(0, 1));
+    assertThat(tradeMessagePage.getContent().get(0)).isEqualTo(dummyTradeMessage);
   }
 }

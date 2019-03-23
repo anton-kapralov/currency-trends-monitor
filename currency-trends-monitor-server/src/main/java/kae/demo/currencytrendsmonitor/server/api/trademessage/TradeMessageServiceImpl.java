@@ -9,6 +9,8 @@ import kae.demo.currencytrendsmonitor.server.api.trade.TradeEntity;
 import kae.demo.currencytrendsmonitor.server.api.trade.TradeRepository;
 import kae.demo.currencytrendsmonitor.server.api.trade.UserEntity;
 import kae.demo.currencytrendsmonitor.server.api.trade.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,6 +53,23 @@ public class TradeMessageServiceImpl implements TradeMessageService {
             tradeMessage.getAmountBuy(),
             tradeMessage.getTimePlaced().atZone(UTC_TIME_ZONE),
             country));
+  }
+
+  @Override
+  public Page<TradeMessage> findAll(Pageable pageable) {
+    return tradeRepository.findAll(pageable).map(this::toTradeMessage);
+  }
+
+  private TradeMessage toTradeMessage(TradeEntity trade) {
+    return new TradeMessage(
+        trade.getUser().getSystemId(),
+        trade.getCurrencyFrom().getIsoCode(),
+        trade.getCurrencyTo().getIsoCode(),
+        trade.getAmountFrom(),
+        trade.getAmountTo(),
+        trade.getRate(),
+        trade.getTimePlaced().toLocalDateTime(),
+        trade.getCountry().getIso2Code());
   }
 
   private CountryEntity getCountry(String iso2Code) {
