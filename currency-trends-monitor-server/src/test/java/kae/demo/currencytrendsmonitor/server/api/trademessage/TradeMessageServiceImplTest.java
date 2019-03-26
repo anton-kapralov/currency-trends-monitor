@@ -4,6 +4,7 @@ import static java.util.Collections.singletonList;
 import static kae.demo.currencytrendsmonitor.server.api.trade.CountryTestHelper.createDummyCountry;
 import static kae.demo.currencytrendsmonitor.server.api.trade.CurrencyTestHelper.createDummyCurrency;
 import static kae.demo.currencytrendsmonitor.server.api.trade.TradeTestHelper.createDummyTrade;
+import static kae.demo.currencytrendsmonitor.server.api.trademessage.TradeMessageTestHelper.createDummyTradeMessage;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
@@ -13,8 +14,6 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Optional;
@@ -37,18 +36,6 @@ import org.springframework.data.domain.Pageable;
 
 /** */
 public class TradeMessageServiceImplTest {
-
-  private static TradeMessage createDummyTradeMessage() {
-    return new TradeMessage(
-        "user-1",
-        "RUB",
-        "USD",
-        BigDecimal.valueOf(65),
-        BigDecimal.ONE,
-        BigDecimal.valueOf(0.0154),
-        LocalDateTime.of(2019, 3, 20, 21, 12, 34),
-        "RU");
-  }
 
   @Mock private CountryRepository countryRepository;
   @Mock private CurrencyRepository currencyRepository;

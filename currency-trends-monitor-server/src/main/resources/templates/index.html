@@ -26,16 +26,20 @@
       <th>Time</th>
       <th>Country</th>
     </tr>
-    <tr th:each="tradeMessage : ${tradeMessagesPage.getContent()}">
+    <tr data-label="trade-message-row" th:each="tradeMessage : ${tradeMessagesPage.getContent()}">
       <!--/*@thymesVar id="tradeMessage" type="kae.demo.currencytrendsmonitor.server.api.trademessage.TradeMessage"*/-->
-      <td th:text="${tradeMessage.userId}">123</td>
-      <td th:text="${tradeMessage.currencyFrom}">RUB</td>
-      <td th:text="${tradeMessage.currencyTo}">USD</td>
-      <td th:text="${tradeMessage.amountSell}">6500</td>
-      <td th:text="${tradeMessage.amountBuy}">100</td>
-      <td th:text="${tradeMessage.rate}">65.0000</td>
-      <td th:text="${tradeMessage.timePlaced}">22.03.2019 22:05</td>
-      <td th:text="${tradeMessage.originatingCountry}">RU</td>
+      <td data-label="trade-message-user-id" th:text="${tradeMessage.userId}">123</td>
+      <td data-label="trade-message-currency-from" th:text="${tradeMessage.currencyFrom}">RUB</td>
+      <td data-label="trade-message-currency-to" th:text="${tradeMessage.currencyTo}">USD</td>
+      <td data-label="trade-message-amount-sell" th:text="${tradeMessage.amountSell}">6500</td>
+      <td data-label="trade-message-amount-buy" th:text="${tradeMessage.amountBuy}">100</td>
+      <td data-label="trade-message-rate" th:text="${tradeMessage.rate}">65.0000</td>
+      <td data-label="trade-message-time-placed" th:text="${tradeMessage.timePlaced}">
+        22.03.2019 22:05
+      </td>
+      <td data-label="trade-message-originating-country"
+          th:text="${tradeMessage.originatingCountry}">RU
+      </td>
     </tr>
   </table>
 </div>
