@@ -1,0 +1,3 @@
+logging:
+  level:
+    kae.demo.currencytrendsmonitor.server.api.trademessage: DEBUG

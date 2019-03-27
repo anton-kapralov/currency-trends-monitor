@@ -1,4 +1,4 @@
-package kae.demo.currencytrendsmonitorserver;
+package kae.demo.currencytrendsmonitor.server;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
