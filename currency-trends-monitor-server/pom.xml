@@ -16,7 +16,7 @@
   <description>Currency Trends Monitor Server</description>
 
   <properties>
-    <java.version>1.8</java.version>
+    <java.version>11</java.version>
     <selenium-api.version>3.141.59</selenium-api.version>
   </properties>
 
