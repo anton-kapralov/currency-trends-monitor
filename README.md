@@ -1,5 +1,5 @@
 ## Currency Trends Monitor [![CircleCI](https://circleci.com/gh/anton-kapralov/currency-trends-monitor/tree/develop.svg?style=svg)](https://circleci.com/gh/anton-kapralov/currency-trends-monitor/tree/develop)
-A some company processes a large number of market interactions per second. The goal of this demo project is to build a market trade processor which consumes trade messages via an endpoint, processes those messages in some way and delivers a frontend of processed information based on the consumed messages.
+A company processes a large number of market interactions per second. The goal of this demo project is to build a market trade processor which consumes trade messages via an endpoint, processes those messages in some way and delivers a frontend of processed information based on the consumed messages.
 
 ### Message Consumption
 #### Goal
