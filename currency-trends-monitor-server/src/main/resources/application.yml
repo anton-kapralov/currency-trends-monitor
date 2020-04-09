@@ -1,3 +1,7 @@
 logging:
   level:
     kae.demo.currencytrendsmonitor.server.api.trademessage: DEBUG
+
+spring:
+  datasource:
+    data: classpath:db/migration/V2__data.sql
