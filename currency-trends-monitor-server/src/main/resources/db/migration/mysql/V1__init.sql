@@ -16,20 +16,20 @@ create table currency
 
 create table trade
 (
-    id               binary(255)    not null,
+    id               varchar(255)    not null,
     amount_from      decimal(19, 2) not null,
     amount_to        decimal(19, 2) not null,
     time_placed      datetime       not null,
     country_id       integer        not null,
     currency_from_id integer        not null,
     currency_to_id   integer        not null,
-    user_id          binary(255)    not null,
+    user_id          varchar(255)    not null,
     primary key (id)
 ) engine = InnoDB;
 
 create table user
 (
-    id        binary(255)  not null,
+    id        varchar(255)  not null,
     system_id varchar(255) not null,
     primary key (id)
 ) engine = InnoDB;

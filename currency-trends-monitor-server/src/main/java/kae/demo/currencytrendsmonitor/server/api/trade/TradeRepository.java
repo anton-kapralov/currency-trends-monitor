@@ -4,4 +4,4 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /** */
-public interface TradeRepository extends JpaRepository<TradeEntity, UUID> {}
+public interface TradeRepository extends JpaRepository<TradeEntity, String> {}

@@ -1,21 +1,22 @@
 package kae.demo.currencytrendsmonitor.server.api.trade;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.UUID;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /** */
 @Entity
 @Table(name = "user")
 public class UserEntity implements Serializable {
 
-  @Id @GeneratedValue private UUID id;
+  @Id
+  @GeneratedValue(generator = "system-uuid")
+  @GenericGenerator(name = "system-uuid", strategy = "uuid")
+  private String id;
 
   @Column(nullable = false, unique = true)
   private String systemId;
@@ -26,7 +27,7 @@ public class UserEntity implements Serializable {
     this.systemId = systemId;
   }
 
-  public UUID getId() {
+  public String getId() {
     return id;
   }
 

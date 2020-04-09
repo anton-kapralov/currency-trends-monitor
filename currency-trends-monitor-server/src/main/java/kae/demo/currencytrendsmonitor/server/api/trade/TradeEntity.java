@@ -1,25 +1,24 @@
 package kae.demo.currencytrendsmonitor.server.api.trade;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.ZonedDateTime;
 import java.util.StringJoiner;
 import java.util.UUID;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 /** */
 @Entity
 @Table(name = "trade")
 public class TradeEntity implements Serializable {
 
-  @Id @GeneratedValue private UUID id;
+  @Id
+  @GeneratedValue(generator = "system-uuid")
+  @GenericGenerator(name = "system-uuid", strategy = "uuid")
+  private String id;
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
   private UserEntity user;
@@ -61,7 +60,7 @@ public class TradeEntity implements Serializable {
     this.country = country;
   }
 
-  public UUID getId() {
+  public String getId() {
     return id;
   }
 

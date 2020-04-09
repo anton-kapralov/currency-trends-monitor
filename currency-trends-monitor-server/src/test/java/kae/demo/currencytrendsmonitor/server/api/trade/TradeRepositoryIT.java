@@ -33,7 +33,7 @@ public class TradeRepositoryIT {
 
   @Test
   public void findById_returnsPersistedTrade() {
-    UUID id = em.persist(createDummyTradeEntity()).getId();
+    String id = em.persist(createDummyTradeEntity()).getId();
 
     Optional<TradeEntity> optionalUser = tradeRepository.findById(id);
 
