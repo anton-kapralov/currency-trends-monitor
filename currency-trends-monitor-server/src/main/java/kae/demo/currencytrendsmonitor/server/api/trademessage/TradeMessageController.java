@@ -1,17 +1,20 @@
 package kae.demo.currencytrendsmonitor.server.api.trademessage;
 
-import javax.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /** */
 @RestController("/api/trademessages")
-@Slf4j
 public final class TradeMessageController {
+
+  private static final Logger log = LoggerFactory.getLogger(TradeMessageController.class);
 
   private final TradeMessageService tradeMessageService;
 
