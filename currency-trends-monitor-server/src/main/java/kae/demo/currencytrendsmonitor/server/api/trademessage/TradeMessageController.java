@@ -23,7 +23,7 @@ public final class TradeMessageController {
   }
 
   @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  public ResponseEntity consume(@RequestBody @Valid TradeMessage tradeMessage) {
+  public ResponseEntity<?> consume(@RequestBody @Valid TradeMessage tradeMessage) {
     log.debug("Received a trade message: {}", tradeMessage);
 
     tradeMessageService.save(tradeMessage);
