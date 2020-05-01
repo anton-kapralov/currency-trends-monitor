@@ -59,6 +59,8 @@
   </dependencies>
 
   <build>
+    <testSourceDirectory>src/test/small</testSourceDirectory>
+
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
