@@ -27,7 +27,7 @@
       <th>Country</th>
     </tr>
     <tr data-label="trade-message-row" th:each="tradeMessage : ${tradeMessagesPage.getContent()}">
-      <!--/*@thymesVar id="tradeMessage" type="kae.demo.currencytrendsmonitor.server.api.trademessage.TradeMessage"*/-->
+      <!--/*@thymesVar id="tradeMessage" type="kae.demo.currencytrendsmonitor.application.representation.TradeMessage"*/-->
       <td data-label="trade-message-user-id" th:text="${tradeMessage.userId}">123</td>
       <td data-label="trade-message-currency-from" th:text="${tradeMessage.currencyFrom}">RUB</td>
       <td data-label="trade-message-currency-to" th:text="${tradeMessage.currencyTo}">USD</td>
