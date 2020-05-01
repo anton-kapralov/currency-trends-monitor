@@ -24,6 +24,7 @@ public class CountryEntity implements Serializable {
   CountryEntity() {}
 
   /** @deprecated For tests only. */
+  @Deprecated
   CountryEntity(Integer id, String iso2Code, String name) {
     this.id = id;
     this.iso2Code = iso2Code;

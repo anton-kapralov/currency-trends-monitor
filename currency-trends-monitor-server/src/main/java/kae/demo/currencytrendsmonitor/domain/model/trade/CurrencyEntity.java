@@ -24,6 +24,7 @@ public class CurrencyEntity implements Serializable {
   CurrencyEntity() {}
 
   /** @deprecated For tests only. */
+  @Deprecated
   CurrencyEntity(Integer id, String isoCode, String name) {
     this.id = id;
     this.isoCode = isoCode;
