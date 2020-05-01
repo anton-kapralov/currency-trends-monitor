@@ -1,14 +1,16 @@
 package kae.demo.currencytrendsmonitor.server.web.selenium;
 
-import static kae.demo.currencytrendsmonitor.server.api.trademessage.TradeMessageTestHelper.createDummyTradeMessage;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import kae.demo.currencytrendsmonitor.server.api.trademessage.TradeMessage;
-import kae.demo.currencytrendsmonitor.server.api.trademessage.TradeMessageService;
+import kae.demo.currencytrendsmonitor.application.representation.TradeMessage;
+import kae.demo.currencytrendsmonitor.application.TradeMessageService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -70,5 +72,17 @@ public class DashboardIT {
 
   private static Predicate<WebElement> dataLabelEqualsTo(String value) {
     return webElement -> webElement.getAttribute("data-label").equals(value);
+  }
+
+  private static TradeMessage createDummyTradeMessage() {
+    return new TradeMessage(
+        "user-1",
+        "RUB",
+        "USD",
+        BigDecimal.valueOf(65),
+        BigDecimal.ONE,
+        BigDecimal.valueOf(0.0154),
+        LocalDateTime.of(2019, 3, 20, 21, 12, 34),
+        "RU");
   }
 }
