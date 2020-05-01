@@ -1,4 +1,4 @@
-package kae.demo.currencytrendsmonitor.infrastructure;
+package kae.demo.currencytrendsmonitor;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

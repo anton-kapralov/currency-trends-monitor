@@ -1,4 +1,4 @@
-package kae.demo.currencytrendsmonitor.server.web.selenium;
+package kae.demo.currencytrendsmonitor;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,7 +28,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 /** */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class DashboardIT {
+public class DashboardWebDriverTest {
 
   private WebDriver driver;
 
@@ -38,7 +38,7 @@ public class DashboardIT {
 
   @BeforeClass
   public static void setUpClass() throws Exception {
-    WebDriverManager.chromedriver().version("73").setup();
+    WebDriverManager.chromedriver().version("81").setup();
   }
 
   @Before
